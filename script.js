@@ -2,6 +2,7 @@ let playerScore = 0;
 let computerScore = 0;
 let playerClickSelection;
 
+const buttons = document.querySelectorAll("button");
 const rockButton = document.getElementById("rock");
 const paperButton = document.getElementById("paper");
 const scissorsButton = document.getElementById("scissors");
@@ -54,7 +55,11 @@ function playGame(playerClickSelection) {
 
   if (playerScore >= 5 || computerScore >= 5) {
     if (playerScore > computerScore) {
-      window.alert("Congratulations you win!");
+      results.innerText = "Congratulations you win!";
+      results.style.fontSize = "36px";
+      buttons.forEach((item) => {
+        item.disabled = true;
+      });
     } else if (computerScore > playerScore) {
       window.alert("You lost. The computer wins");
     } else {
