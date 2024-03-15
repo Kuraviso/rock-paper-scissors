@@ -64,7 +64,7 @@ function playGame(playerClickSelection) {
       resetBtn.style.display = "block";
       resetBtn.disabled = false;
     } else if (computerScore > playerScore) {
-      results.innerText = "You lost!. The computer wins";
+      results.innerText = "You lost! The computer wins";
       results.style.fontSize = "36px";
       buttons.forEach((item) => {
         item.disabled = true;
