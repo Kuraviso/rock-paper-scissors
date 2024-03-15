@@ -41,25 +41,25 @@ function playRound(playerChoice, computerChoice) {
 }
 
 function playGame(playerClickSelection) {
-  while (playerScore < 5 && computerScore < 5) {
-    const playerSelection = playerClickSelection;
-    const computerSelection = getComputerChoice();
-    const result = playRound(playerSelection, computerSelection);
-    results.innerText = result;
-    results.style.textAlign = "center";
-    combatArea.appendChild(results);
-    playerImg.setAttribute("src", `./images/${playerClickSelection}.png`);
-    computerImg.setAttribute("src", `./images/${computerSelection}.png`);
-    combatArea.appendChild(playerImg);
-    combatArea.appendChild(computerImg);
+  const playerSelection = playerClickSelection;
+  const computerSelection = getComputerChoice();
+  const result = playRound(playerSelection, computerSelection);
+  results.innerText = result;
+  results.style.textAlign = "center";
+  combatArea.appendChild(results);
+  playerImg.setAttribute("src", `./images/${playerClickSelection}.png`);
+  computerImg.setAttribute("src", `./images/${computerSelection}.png`);
+  combatArea.appendChild(playerImg);
+  combatArea.appendChild(computerImg);
 
-    // if (playerScore > computerScore) {
-    //   window.alert("Congratulations you win!");
-    // } else if (computerScore > playerScore) {
-    //   window.alert("You lost. The computer wins");
-    // } else {
-    //   window.alert("It's a tie!");
-    // }
+  if (playerScore >= 5 || computerScore >= 5) {
+    if (playerScore > computerScore) {
+      window.alert("Congratulations you win!");
+    } else if (computerScore > playerScore) {
+      window.alert("You lost. The computer wins");
+    } else {
+      window.alert("It's a tie!");
+    }
   }
 }
 
