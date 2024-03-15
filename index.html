@@ -4,8 +4,23 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Odin Game</title>
+    <script src="./script.js" defer></script>
+    <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
-    <script src="./script.js"></script>
+    <h1>Rock, Paper Scissors!</h1>
+    <div>
+      <button id="rock"><img src="/images/rock.png" alt="" /></button>
+      <button id="paper"><img src="/images/paper.png" alt="" /></button>
+      <button id="scissors"><img src="/images/scissors.png" alt="" /></button>
+    </div>
+    <div class="combat-area" id="combatArea"></div>
+    <div class="grid">
+      <h2>Score:</h2>
+      <div class="scores">
+        <p id="playerScore">Player: 0</p>
+        <p id="computerScore">Computer: 0</p>
+      </div>
+    </div>
   </body>
 </html>

@@ -1,4 +1,16 @@
-// Generates a random choice of 'rock', 'paper', or 'scissors'.
+let playerScore = 0;
+let computerScore = 0;
+let playerClickSelection;
+
+const rockButton = document.getElementById("rock");
+const paperButton = document.getElementById("paper");
+const scissorsButton = document.getElementById("scissors");
+const playerScoreDisplay = document.getElementById("playerScore");
+const computerScoreDisplay = document.getElementById("computerScore");
+const combatArea = document.getElementById("combatArea");
+const results = document.createElement("p");
+const playerImg = document.createElement("img");
+const computerImg = document.createElement("img");
 
 function getComputerChoice() {
   const choices = ["rock", "paper", "scissors"];
@@ -6,20 +18,9 @@ function getComputerChoice() {
   return choices[randomNumber];
 }
 
-function getPlayerChoice() {
-  const validPick = ["rock", "paper", "scissors"];
-  let playerSelection;
-  do {
-    playerSelection = String(
-      prompt("Pick your Weapon \nrock, paper or scissors", "")
-    ).toLowerCase();
-  } while (!validPick.includes(playerSelection));
-  return playerSelection;
-}
-
 function playRound(playerChoice, computerChoice) {
   let result = "";
-
+  let finalResult = "";
   if (playerChoice === computerChoice) {
     result = "Tie";
   } else if (
@@ -29,33 +30,50 @@ function playRound(playerChoice, computerChoice) {
   ) {
     result = "Player wins";
     playerScore += 1;
+    playerScoreDisplay.innerText = `Player: ${playerScore}`;
   } else {
     result = "Computer wins";
     computerScore += 1;
+    computerScoreDisplay.innerText = `Computer: ${computerScore}`;
   }
-  window.alert(
-    `${result}: ${playerChoice} vs ${computerChoice} \nThe Score is: \nplayer: ${playerScore} - computer: ${computerScore}`
-  );
-  return `${result}: ${playerChoice} vs ${computerChoice} \nThe Score is: \nplayer: ${playerScore} - computer: ${computerScore}`;
+  finalResult = `${result}: \n${playerChoice} vs ${computerChoice}`;
+  return finalResult;
 }
 
-function playGame() {
-  for (i = 0; i < 5; i++) {
-    const playerChoice = getPlayerChoice();
+function playGame(playerClickSelection) {
+  while (playerScore < 5 && computerScore < 5) {
+    const playerSelection = playerClickSelection;
     const computerSelection = getComputerChoice();
-    console.log(playRound(playerChoice, computerSelection));
-  }
+    const result = playRound(playerSelection, computerSelection);
+    results.innerText = result;
+    results.style.textAlign = "center";
+    combatArea.appendChild(results);
+    playerImg.setAttribute("src", `./images/${playerClickSelection}.png`);
+    computerImg.setAttribute("src", `./images/${computerSelection}.png`);
+    combatArea.appendChild(playerImg);
+    combatArea.appendChild(computerImg);
 
-  if (playerScore > computerScore) {
-    window.alert("Congratulations you win!");
-  } else if (computerScore > playerScore) {
-    window.alert("You lost. The computer wins");
-  } else {
-    window.alert("It's a tie!");
+    // if (playerScore > computerScore) {
+    //   window.alert("Congratulations you win!");
+    // } else if (computerScore > playerScore) {
+    //   window.alert("You lost. The computer wins");
+    // } else {
+    //   window.alert("It's a tie!");
+    // }
   }
 }
 
-let playerScore = 0;
-let computerScore = 0;
+rockButton.addEventListener("click", () => {
+  playerClickSelection = "rock";
+  playGame(playerClickSelection);
+});
 
-playGame();
+paperButton.addEventListener("click", () => {
+  playerClickSelection = "paper";
+  playGame(playerClickSelection);
+});
+
+scissorsButton.addEventListener("click", () => {
+  playerClickSelection = "scissors";
+  playGame(playerClickSelection);
+});
