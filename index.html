@@ -10,11 +10,18 @@
   <body>
     <h1>Rock, Paper Scissors!</h1>
     <div>
-      <button id="rock"><img src="/images/rock.png" alt="" /></button>
-      <button id="paper"><img src="/images/paper.png" alt="" /></button>
-      <button id="scissors"><img src="/images/scissors.png" alt="" /></button>
+      <button class="game-button" id="rock">
+        <img src="/images/rock.png" alt="" />
+      </button>
+      <button class="game-button" id="paper">
+        <img src="/images/paper.png" alt="" />
+      </button>
+      <button class="game-button" id="scissors">
+        <img src="/images/scissors.png" alt="" />
+      </button>
     </div>
     <div class="combat-area" id="combatArea"></div>
+
     <div class="grid">
       <h2>Score:</h2>
       <div class="scores">
@@ -22,5 +29,6 @@
         <p id="computerScore">Computer: 0</p>
       </div>
     </div>
+    <button class="reset-button" id="resetButton" hidden>Restart?</button>
   </body>
 </html>

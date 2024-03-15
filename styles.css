@@ -9,11 +9,27 @@ body {
   flex-direction: column;
 }
 
-button {
+.game-button {
   background-color: transparent;
   border: none;
   transition: ease-in 0.4s;
   cursor: pointer;
+}
+
+.reset-button {
+  margin-bottom: 40px;
+  transition: ease-in-out 0.5s;
+  padding: 10px;
+  font-size: 18px;
+  font-weight: 800;
+  background-color: transparent;
+  border: 2px solid black;
+  border-radius: 20px;
+}
+
+.reset-button:hover {
+  background-color: black;
+  color: white;
 }
 
 .combat-area {

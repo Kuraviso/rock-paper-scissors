@@ -12,6 +12,7 @@ const combatArea = document.getElementById("combatArea");
 const results = document.createElement("p");
 const playerImg = document.createElement("img");
 const computerImg = document.createElement("img");
+const resetBtn = document.getElementById("resetButton");
 
 function getComputerChoice() {
   const choices = ["rock", "paper", "scissors"];
@@ -60,13 +61,45 @@ function playGame(playerClickSelection) {
       buttons.forEach((item) => {
         item.disabled = true;
       });
+      resetBtn.style.display = "block";
+      resetBtn.disabled = false;
     } else if (computerScore > playerScore) {
-      window.alert("You lost. The computer wins");
+      results.innerText = "You lost!. The computer wins";
+      results.style.fontSize = "36px";
+      buttons.forEach((item) => {
+        item.disabled = true;
+      });
+      resetBtn.style.display = "block";
+      resetBtn.disabled = false;
     } else {
-      window.alert("It's a tie!");
+      results.innerText = "It's a tie!";
+      results.style.fontSize = "36px";
+      buttons.forEach((item) => {
+        item.disabled = true;
+      });
+      resetBtn.style.display = "block";
+      resetBtn.disabled = false;
     }
   }
 }
+
+function reset() {
+  results.style.fontSize = "16px";
+  results.innerText = "";
+  playerScore = 0;
+  computerScore = 0;
+  playerClickSelection = "";
+  computerImg.src = "";
+  playerImg.src = "";
+  playerScoreDisplay.innerText = `Player: ${playerScore}`;
+  computerScoreDisplay.innerText = `Computer: ${computerScore}`;
+  buttons.forEach((item) => {
+    item.disabled = false;
+  });
+  resetBtn.style.display = "none";
+}
+
+resetBtn.addEventListener("click", reset);
 
 rockButton.addEventListener("click", () => {
   playerClickSelection = "rock";
